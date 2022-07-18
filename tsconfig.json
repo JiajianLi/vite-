@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext", // 以module方式加载ts
+        "moduleResolution": "node", // 通过node方式解析模块
+        "strict": true, // 开启严格模式
+        "jsx": "preserve", // 不编译jsx语法留给plugin编译
+        "sourceMap": true, // 开启sourceMap能在浏览器直接看到ts的代码
+        "resolveJsonModule": true, // 是否可以直接import json
+        "esModuleInterop": true,
+        "lib": ["ESNext", "DOM"],
+        "allowJs": true,
+        "isolatedModules": true,
+        "types": []
+    },
+    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx ", "src/**/*.vue"],
+    "exclude": ["node_modules","./node_modules","./node_modules/*","./node_modules/@types/node/index.d.ts",]
+}
