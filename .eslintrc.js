@@ -1,6 +1,6 @@
 module.exports = {
-    extends: "standard",
-    globals: {
-        postMessage: true
-    }
-};
+  extends: 'standard',
+  globals: {
+    postMessage: true
+  }
+}
