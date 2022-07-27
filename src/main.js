@@ -9,10 +9,8 @@ import App from './App'
 //     console.log(e);
 // };
 
+import pkg from '../package.json'
 
-import pkg from '../package.json';
-
-console.log(pkg);
-
+console.log(pkg)
 
 createApp(App).mount('#app')
