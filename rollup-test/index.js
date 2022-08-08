@@ -1,18 +1,9 @@
-import path from 'path';
-import { funA } from 'a';
+import React from "react"
 
-import react from 'react';
+React.createElememt('div')
 
-import pkg from './package.json'
+// function hello () {
+//   console.log('hello esbuild')
+// }
 
-import { myTSFun } from './testts';
-
-import url from './logo.png'
-
-console.log(url)
-console.log(__TEST__);
-
-myTSFun('leezar')
-
-funA();
-console.log('hello rollup1', pkg);
+// hello()
