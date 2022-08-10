@@ -1,18 +1,13 @@
-import path from 'path';
-import { funA } from 'a';
+// import react from 'react'
 
-import react from 'react';
+// const div = react.createElement('div')
 
-import pkg from './package.json'
+// function helloDiv () {
+//     console.log('hello div')
+// }
 
-import { myTSFun } from './testts';
+// helloDiv()
 
-import url from './logo.png'
-
-console.log(url)
-console.log(__TEST__);
-
-myTSFun('leezar')
-
-funA();
-console.log('hello rollup1', pkg);
+const aa = 1
+bb += aa
+// console.log(bb)
