@@ -1,13 +1,17 @@
-// import react from 'react'
+import react from 'react'
 
-// const div = react.createElement('div')
+const div = react.createElement('div')
 
-// function helloDiv () {
-//     console.log('hello div')
-// }
+function helloDiv () {
+    console.log('hello div')
+}
 
-// helloDiv()
+helloDiv()
 
-const aa = 1
-bb += aa
+// const aa = 1
+// bb += aa
 // console.log(bb)
+
+console.log(GLOBAL)
+
+export default helloDiv

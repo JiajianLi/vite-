@@ -1,5 +1,9 @@
 "use strict";
-
-// index.js
-var aa = 1;
-bb += aa;
+import react from "react";
+const div = react.createElement("div");
+function helloDiv() {
+  console.log("hello div");
+}
+helloDiv();
+console.log(123);
+export default helloDiv;
