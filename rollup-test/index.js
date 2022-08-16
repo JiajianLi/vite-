@@ -1,3 +1,4 @@
-import logo from './logo.png';
+import logo from './logo.png'
+import txt from './test.txt'
 
-console.log(logo);
+console.log(logo, txt)
