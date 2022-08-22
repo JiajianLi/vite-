@@ -3,21 +3,39 @@
 export function render () {
   document.querySelector('#app').innerHTML = `
     <div>
-      <h1>Hello HMR!！!</h1>
+      <h1>Hello HMR!</h1>
     </div>
   `
 }
+// let timer
+// export function render () {
+//   timer = setInterval(() => {
+//     i++
+//     document.querySelector('#app').innerHTML = `
+//         <div>
+//           <h1>Hello HMR!！</h1>
+//           <h2>${i}</h2>
+//         </div>
+//       `
+//   }, 1000)
+// }
 
-let i = 0
-setInterval(() => {
-  console.log(++i)
-}, 1000)
+export let i = import.meta?.hot?.data?.cache?.getI() || 0
+const timer = setInterval(() => { console.log(++i) }, 1000)
 
-
-
-
-
-
+if (import.meta.hot) {
+  console.log('触发hmr-test热更新')
+  // 触发热更新时缓存i值在闭包里
+  if (import.meta.hot.data) {
+    import.meta.hot.data.I = i
+    import.meta.hot.data.cache = {
+      getI () {
+        return i
+      }
+    }
+  }
+  import.meta.hot.dispose(() => { if (timer) clearInterval(timer) })
+}
 
 // export function render () {
 //   document.querySelector('#app').innerHTML = `
