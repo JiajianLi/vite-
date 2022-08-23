@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue'
-
+import { aaa } from './testId'
+aaa()
 export default defineComponent({
   setup () {
     return () => {

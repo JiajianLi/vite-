@@ -1,12 +1,23 @@
 export default () => {
   return {
     name: 'test',
+    // enforce: 'pre',
+    // configResolved(config) {
+    //   console.log(11, config.command)
+    // },
+    resolveId(id) {
+      console.log(22, id)
+    },
+    load(id) {
+      console.log(33, id)
+    },
     transformIndexHtml(html) {
+      console.log('transformIndexHtml:')
       console.log(html)
     },
     handleHotUpdate(ctx) {
-      console.log('handleHotUpdate!')
-      console.log(ctx)
+      console.log('handleHotUpdate!!')
+      // console.log(ctx)
       /**
        * {
        *    file: 更新的文件
@@ -35,22 +46,5 @@ export default () => {
        * }
        */
     }
-  }
-}
-
-interface ImportMeta {
-  readonly hot?: {
-    readonly data: any
-
-    accept(): void
-    accept(cb: (mod: any) => void): void
-    accept(dep: string, cb: (mod: any) => void): void
-    accept(deps: string[], cb: (mods: any[]) => void): void
-
-    dispose(cb: (data: any) => void): void
-    decline(): void
-    invalidate(): void
-
-    on(event: string, cb: (...args: any[]) => void): void
   }
 }
