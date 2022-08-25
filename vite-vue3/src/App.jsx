@@ -8,7 +8,6 @@ export default defineComponent({
     }
   }
 })
-console.log(111)
 
 if (import.meta.hot) {
   import.meta.hot.on('handleHotUpdate', val => {

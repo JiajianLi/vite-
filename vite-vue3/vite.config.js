@@ -5,7 +5,7 @@ import testPlugin from './plugins/test-plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [testPlugin(), vue(), vueJsx()],
+  plugins: [vue(), vueJsx(), testPlugin()],
   resolve: {
     alias: {
       '@diy': ''

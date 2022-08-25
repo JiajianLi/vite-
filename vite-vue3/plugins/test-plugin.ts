@@ -9,7 +9,7 @@ export default () => {
       console.log(22, id)
     },
     load(id) {
-      console.log(33, id)
+      console.log('load:', id)
     },
     transformIndexHtml(html) {
       console.log('transformIndexHtml:')
