@@ -161,7 +161,7 @@ function vueJsxPlugin(options = {}) {
         for (const node of result.ast.program.body) {
           // TODO 节点类型为VariableDeclaration
           /**
-           * 什么是VariableDeclaration，就是 const test = defineComponent({}) 没有export出去
+           * 什么是VariableDeclaration，就是 const test = xxx 没有export出去
            */
            if (node.type === 'VariableDeclaration') {
             // TODO 判断变量的声明是否是一个组件的声明，如果是会放到declaredComponents里
@@ -235,15 +235,15 @@ function vueJsxPlugin(options = {}) {
             } else if (isDefineComponentCall(node.declaration)) {
               // TODO 是defineComponentCall也推进hotComponents
               hasDefault = true
-              // TODO 是不是很熟悉，在源代码里见到过
-              // TODO local会赋值为__default__，如果没有变量名字无法在文件里通过import {} 结构的方式引用它
-              // TODO 因为vite是基于es module的方式进行模块管理的，也就是通过收集export xxx 和 import { xxx } from xxxx来进行模块管理，没有变量名对hmr来说很不方便
-              // TODO 所以会加工成 __default__ = defineComponent  export default __default__ 这种形式
               hotComponents.push({
                 local: '__default__',
                 exported: 'default',
                 id: hash(id + 'default')
               })
+              // TODO 是不是很熟悉，在源代码里见到过
+              // TODO local会赋值为__default__，如果没有变量名字无法在文件里通过import {} 结构的方式引用它
+              // TODO 因为vite是基于es module的方式进行模块管理的，也就是通过收集export xxx 和 import { xxx } from xxxx来进行模块管理，没有变量名对hmr来说很不方便
+              // TODO 所以会加工成 __default__ = defineComponent  export default __default__ 这种形式
             }
           }
         }
@@ -252,6 +252,7 @@ function vueJsxPlugin(options = {}) {
         // TODO step2
 
         if (hotComponents.length) {
+          // TODO 如果默认导出的是组件并且需要(热更新或服务端渲染)
           if (hasDefault && (needHmr || ssr)) {
             result.code =
               result.code.replace(
