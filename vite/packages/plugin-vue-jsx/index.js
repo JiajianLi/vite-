@@ -17,6 +17,8 @@ const ssrRegisterHelperCode =
  * @param {import('vue').ComponentOptions} comp
  * @param {string} filename
  */
+// TODO 替换setup，在外面包了一层
+// TODO 在ssrContext里增加模块文件路径，vue3要求我们这么做
 function ssrRegisterHelper(comp, filename) {
   const setup = comp.setup
   comp.setup = (props, ctx) => {
@@ -40,7 +42,7 @@ function ssrRegisterHelper(comp, filename) {
  * @returns {import('vite').Plugin}
  */
 function vueJsxPlugin(options = {}) {
-  let root = ''
+  let root = '' // TODO 根目录
   let needHmr = false
   let needSourceMap = true
 
@@ -87,6 +89,7 @@ function vueJsxPlugin(options = {}) {
        * 处理文件代码为 ssrRegisterHelperCode
        * 不需要手动新增文件，也就是说我们可以在页面里直接使用：
        * import { ssrRegisterHelper } from '/__vue-jsx-ssr-register-helper'
+       * 下面处理ssr的时候有用到
        */
     },
     // TODO
@@ -261,25 +264,66 @@ function vueJsxPlugin(options = {}) {
               ) + `\nexport default __default__`
           }
 
+          // TODO 需要热更新不需要ssr
           if (needHmr && !ssr) {
-            let code = result.code
+            let code = result.code // TODO 当前文件代码
             let callbackCode = ``
+            // TODO 在文件后面加上以下内容
+            // TODO 给每一个需要热更新的组件初始化一个唯一的__hmrId
+            // TODO 在增加HMR RUNTIME 相关的代码，createRecord 有点组件注册，代理收集内味
             for (const { local, exported, id } of hotComponents) {
               code +=
                 `\n${local}.__hmrId = "${id}"` +
                 `\n__VUE_HMR_RUNTIME__.createRecord("${id}", ${local})`
               callbackCode += `\n__VUE_HMR_RUNTIME__.reload("${id}", __${exported})`
             }
+            // TODO callbackCode会被拼接成：
+            /**
+             `
+              __VUE_HMR_RUNTIME__.reload("hash(路径+exported)", __aaa)
+              __VUE_HMR_RUNTIME__.reload("hash(路径+exported)", __bbb)
+              __VUE_HMR_RUNTIME__.reload("hash(路径+exported)", __ccc)
+             `
+             */
 
+            // TODO 在accept里执行callbackCode，也就是当前模块触发热更新之后会reload当前模块hotComponents里的组件
+            // TODO map是为了加工入参与上面生成callbackCode一致，使用__exported的形式
             code += `\nimport.meta.hot.accept(({${hotComponents
               .map((c) => `${c.exported}: __${c.exported}`)
               .join(',')}}) => {${callbackCode}\n})`
 
+            // TODO 看过文章的朋友应该有印象，accept方法，是会在触发热更新之后执行的回调方法
+            /**
+             `
+              import.meta.hot.accept((
+                {
+                  default: __default,
+                  aaa: __aaa,
+                  bbb: __bbb,
+                  ccc: __ccc
+                }
+              ) => {${callbackCode}\n}
+             `
+             */
+
             result.code = code
           }
 
+          // TODO 我对vue的ssr不是很熟悉，ssr模式下render函数有些不同，它是使用createSSRApp创建ssr的应用实例，返回通过 @vue/server-renderer 里的renderToString方法获取html代码
+          export async function render(url, manifest) {
+            const app = createSSRApp(App)
+
+            const ctx = {} // 存放服务端获取的信息
+
+            const html = await renderToString(app, ctx)
+            // 查看renderToString源码:
+            // app.provide(ssrContextKey, ctx)
+            // ssrContext会监听这个
+          }
           if (ssr) {
+            // TODO path.relative(root, id) 根目录到当前文件目录的相对路径
             const normalizedId = normalizePath(path.relative(root, id))
+            //
             let ssrInjectCode =
               `\nimport { ssrRegisterHelper } from "${ssrRegisterHelperId}"` +
               `\nconst __moduleId = ${JSON.stringify(normalizedId)}`
@@ -287,7 +331,17 @@ function vueJsxPlugin(options = {}) {
               ssrInjectCode += `\nssrRegisterHelper(${local}, __moduleId)`
             }
             result.code += ssrInjectCode
+            // TODO 在ssr模式下，会给模块增加如下代码：
+            /**
+              import { ssrRegisterHelper } from '/__vue-jsx-ssr-register-helper'
+              const __moduleId = '当前模块文件路径'
+              ssrRegisterHelper(组件名1, __moduleId)
+              ssrRegisterHelper(组件名2, __moduleId)
+              ssrRegisterHelper(组件名3, __moduleId)
+             */
           }
+          // TODO 只会处理ssr的bundle
+          // TODO 在server端渲染ssr模块的时候，也是通过vite编译的，它们的区别是transform时传入的ssr
         }
 
         return {
