@@ -1,29 +1,26 @@
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue'
+
 // import './styles/index.css';
+import '@styles/test.less'
 
-import '@styles/test.less';
+import classes from '@styles/test.module.css'
 
-import classes from '@styles/test.module.css';
+// import a from './a?raw'
 
-// import { A } from './test';
+import pngUrl from './assets/logo.png'
 
-// import { a } from './b';
-
-import a from './a?raw';
-
-
-import pngUrl from './assets/logo.png';
-console.log(a, 1);
+import Hello from './hello.mdx'
 
 export default defineComponent({
-    setup() {
-        return () => (
-            <>
-                <div class={ `root ${classes.moduleClass} ` }>
-                    Hello vite
-                </div>
-                <img src={pngUrl} />
-            </>
-        )
-    }
+  setup () {
+    return () => (
+      <>
+        <div class={ `root ${classes.moduleClass} ` }>
+          Hello vite
+        </div>
+        <img src={pngUrl} />
+        <Hello />
+      </>
+    )
+  }
 })
