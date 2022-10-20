@@ -10,6 +10,7 @@ export default defineConfig({
   plugins: [
     viteMdx(),
     vueJsx({
+      // 默认只有jsx/tsx，需要告诉它要处理mdx的代码
       include: /\.(jsx|tsx|mdx)/
     })
   ],

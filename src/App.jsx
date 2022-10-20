@@ -11,14 +11,15 @@ import pngUrl from './assets/logo.png'
 
 import Hello from './hello.mdx'
 
+// console.log(a, 1)
+
 export default defineComponent({
   setup () {
     return () => (
       <>
-        <div class={ `root ${classes.moduleClass} ` }>
-          Hello vite
-        </div>
+        <div class={`root ${classes.moduleClass} `}>Hello vite</div>
         <img src={pngUrl} />
+
         <Hello />
       </>
     )
