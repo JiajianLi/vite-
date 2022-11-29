@@ -16,7 +16,7 @@ const MDXCreateElement = defineComponent({
       default: () => ({})
     },
     originalType: String,
-    mdxType: String,
+    mdxType: { type: String, default: TYPE_PROP_NAME },
     parentName: String
   },
   setup(props, { slots }) {
@@ -26,7 +26,7 @@ const MDXCreateElement = defineComponent({
       const components = componentsRef.value
       const { parentName, originalType, mdxType: type, ...etc } = props
 
-      const Component = 
+      const Component =
         components[`${parentName}.${type}`] ||
         components[type] ||
         DEFAULTS[type] ||
@@ -46,7 +46,7 @@ export default function mdx(
 ) {
   let component = type
   let newProps = props
-  
+
   const mdxType = props && props.mdxType
 
   if (typeof type === 'string' || mdxType) {

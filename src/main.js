@@ -11,6 +11,6 @@ import App from './App'
 
 import pkg from '../package.json'
 
-console.log(pkg)
+console.log('pkg:', pkg)
 
 createApp(App).mount('#app')

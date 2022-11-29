@@ -255,6 +255,40 @@
     "@babel/helper-validator-identifier" "^7.14.5"
     to-fast-properties "^2.0.0"
 
+"@futuweb/tool-base@^1.0.0":
+  version "1.2.5"
+  resolved "http://registry.npm.oa.com/@futuweb/tool-base/download/@futuweb/tool-base-1.2.5.tgz#39e2ba9fa81ede38a2127c7f36890cfecc0c04d5"
+  integrity sha1-OeK6n6ge3jiiEnx/NokM/swMBNU=
+  dependencies:
+    babel-runtime "^6.23.0"
+
+"@futuweb/tool-browser@^2.0.0":
+  version "2.17.1"
+  resolved "http://registry.npm.oa.com/@futuweb/tool-browser/download/@futuweb/tool-browser-2.17.1.tgz#ad88dd386c82e04312d3fd1600a9541d5bf75c22"
+  integrity sha1-rYjdOGyC4EMS0/0WAKlUHVv3XCI=
+  dependencies:
+    babel-plugin-transform-runtime "^6.23.0"
+    crypto-js "^3.1.9-1"
+    ua-parser-js "^0.7.20"
+
+"@futuweb/ui-datepicker@^4.8.0":
+  version "4.8.0"
+  resolved "http://registry.npm.oa.com/@futuweb/ui-datepicker/download/@futuweb/ui-datepicker-4.8.0.tgz#9fd35eb9ad0c14e5757e1f4a475265cfeb7c3f8e"
+  integrity sha1-n9Neua0MFOV1fh9KR1Jlz+t8P44=
+  dependencies:
+    "@futuweb/tool-base" "^1.0.0"
+    "@futuweb/tool-browser" "^2.0.0"
+    "@futuweb/ui-timepicker" "^2.1.1"
+    amdi18n-loader "^0.8.0"
+
+"@futuweb/ui-timepicker@^2.1.1":
+  version "2.3.0"
+  resolved "http://registry.npm.oa.com/@futuweb/ui-timepicker/download/@futuweb/ui-timepicker-2.3.0.tgz#c872f0056489890e6f17f7f33d502b34eb6183d9"
+  integrity sha1-yHLwBWSJiQ5vF/fzPVArNOthg9k=
+  dependencies:
+    "@futuweb/tool-base" "^1.0.0"
+    "@futuweb/tool-browser" "^2.0.0"
+
 "@rollup/pluginutils@^4.1.0":
   version "4.1.0"
   resolved "https://registry.npm.taobao.org/@rollup/pluginutils/download/@rollup/pluginutils-4.1.0.tgz?cache=0&sync_timestamp=1603765613301&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40rollup%2Fpluginutils%2Fdownload%2F%40rollup%2Fpluginutils-4.1.0.tgz#0dcc61c780e39257554feb7f77207dceca13c838"
@@ -378,12 +412,35 @@
   resolved "https://registry.nlark.com/@vue/shared/download/@vue/shared-3.1.1.tgz#2287cfc3dc20e5b20aeb65c2c3a56533bdca801c"
   integrity sha1-IofPw9wg5bIK62XCw6VlM73KgBw=
 
+amdi18n-loader@^0.8.0:
+  version "0.8.0"
+  resolved "http://registry.npm.oa.com/amdi18n-loader/download/amdi18n-loader-0.8.0.tgz#1ff611951abbf0f708ad72d255bcf0077ed87958"
+  integrity sha1-H/YRlRq78PcIrXLSVbzwB37YeVg=
+  dependencies:
+    coffee-loader "^0.7.2"
+    coffee-script "^1.12.2"
+
 ansi-styles@^3.2.1:
   version "3.2.1"
   resolved "https://registry.nlark.com/ansi-styles/download/ansi-styles-3.2.1.tgz?cache=0&sync_timestamp=1618995625950&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fansi-styles%2Fdownload%2Fansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
   integrity sha1-QfuyAkPlCxK+DwS43tvwdSDOhB0=
   dependencies:
     color-convert "^1.9.0"
+
+babel-plugin-transform-runtime@^6.23.0:
+  version "6.23.0"
+  resolved "http://registry.npm.oa.com/babel-plugin-transform-runtime/download/babel-plugin-transform-runtime-6.23.0.tgz#88490d446502ea9b8e7efb0fe09ec4d99479b1ee"
+  integrity sha1-iEkNRGUC6puOfvsP4J7E2ZR5se4=
+  dependencies:
+    babel-runtime "^6.22.0"
+
+babel-runtime@^6.22.0, babel-runtime@^6.23.0:
+  version "6.26.0"
+  resolved "http://registry.npm.oa.com/babel-runtime/download/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+  integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
 
 big.js@^5.2.2:
   version "5.2.2"
@@ -425,6 +482,18 @@ chalk@^2.0.0:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
+coffee-loader@^0.7.2:
+  version "0.7.3"
+  resolved "http://registry.npm.oa.com/coffee-loader/download/coffee-loader-0.7.3.tgz#fadbc6efd6fc7ecc88c5b3046a2c292066bcb54a"
+  integrity sha1-+tvG79b8fsyIxbMEaiwpIGa8tUo=
+  dependencies:
+    loader-utils "^1.0.2"
+
+coffee-script@^1.12.2:
+  version "1.12.7"
+  resolved "http://registry.npm.oa.com/coffee-script/download/coffee-script-1.12.7.tgz#c05dae0cb79591d05b3070a8433a98c9a89ccc53"
+  integrity sha1-wF2uDLeVkdBbMHCoQzqYyaiczFM=
+
 color-convert@^1.9.0:
   version "1.9.3"
   resolved "https://registry.npm.taobao.org/color-convert/download/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
@@ -455,6 +524,16 @@ convert-source-map@^1.7.0:
   integrity sha1-F6LLiC1/d9NJBYXizmxSRCSjpEI=
   dependencies:
     safe-buffer "~5.1.1"
+
+core-js@^2.4.0:
+  version "2.6.12"
+  resolved "http://registry.npm.oa.com/core-js/download/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+  integrity sha1-2TM9+nsGXjR8xWgiGdb2kIWcwuw=
+
+crypto-js@^3.1.9-1:
+  version "3.3.0"
+  resolved "http://registry.npm.oa.com/crypto-js/download/crypto-js-3.3.0.tgz#846dd1cce2f68aacfa156c8578f926a609b7976b"
+  integrity sha1-hG3RzOL2iqz6FWyFePkmpgm3l2s=
 
 cssesc@^3.0.0:
   version "3.0.0"
@@ -593,7 +672,7 @@ json5@^2.1.2:
   dependencies:
     minimist "^1.2.5"
 
-loader-utils@^1.1.0:
+loader-utils@^1.0.2, loader-utils@^1.1.0:
   version "1.4.0"
   resolved "https://registry.npm.taobao.org/loader-utils/download/loader-utils-1.4.0.tgz#c579b5e34cb34b1a74edc6c1fb36bfa371d5a613"
   integrity sha1-xXm140yzSxp07cbB+za/o3HVphM=
@@ -722,6 +801,11 @@ postcss@^8.1.10, postcss@^8.3.0:
     nanoid "^3.1.23"
     source-map-js "^0.6.2"
 
+regenerator-runtime@^0.11.0:
+  version "0.11.1"
+  resolved "http://registry.npm.oa.com/regenerator-runtime/download/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+  integrity sha1-vgWtf5v30i4Fb5cmzuUBf78Z4uk=
+
 resolve@^1.19.0:
   version "1.20.0"
   resolved "https://registry.npm.taobao.org/resolve/download/resolve-1.20.0.tgz#629a013fb3f70755d6f0b7935cc1c2c5378b1975"
@@ -788,6 +872,11 @@ to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/to-fast-properties/download/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
   integrity sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=
+
+ua-parser-js@^0.7.20:
+  version "0.7.31"
+  resolved "http://registry.npm.oa.com/ua-parser-js/download/ua-parser-js-0.7.31.tgz#649a656b191dffab4f21d5e053e27ca17cbff5c6"
+  integrity sha1-ZJplaxkd/6tPIdXgU+J8oXy/9cY=
 
 util-deprecate@^1.0.2:
   version "1.0.2"

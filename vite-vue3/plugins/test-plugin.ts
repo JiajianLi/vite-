@@ -6,17 +6,17 @@ export default () => {
     //   console.log(11, config.command)
     // },
     resolveId(id) {
-      console.log(22, id)
+      // console.log(22, id)
     },
     load(id) {
-      console.log('load:', id)
+      // console.log('load:', id)
     },
     transformIndexHtml(html) {
-      console.log('transformIndexHtml:')
-      console.log(html)
+      // console.log('transformIndexHtml:')
+      // console.log(html)
     },
     handleHotUpdate(ctx) {
-      console.log('handleHotUpdate!!')
+      // console.log('handleHotUpdate!!')
       // console.log(ctx)
       /**
        * {

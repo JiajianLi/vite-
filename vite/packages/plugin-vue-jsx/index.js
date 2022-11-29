@@ -256,7 +256,7 @@ function vueJsxPlugin(options = {}) {
 
         if (hotComponents.length) {
           // TODO 如果默认导出的是组件并且需要(热更新或服务端渲染)
-          if (hasDefault && (needHmr || ssr)) {
+          if (hasDefault && (needHmr || ssr)) {-
             result.code =
               result.code.replace(
                 /export default defineComponent/g,
@@ -310,16 +310,17 @@ function vueJsxPlugin(options = {}) {
           }
 
           // TODO 我对vue的ssr不是很熟悉，ssr模式下render函数有些不同，它是使用createSSRApp创建ssr的应用实例，返回通过 @vue/server-renderer 里的renderToString方法获取html代码
-          export async function render(url, manifest) {
-            const app = createSSRApp(App)
+          // TODO ssr模式下render的代码：
+          // export async function render(url, manifest) {
+          //   const app = createSSRApp(App)
 
-            const ctx = {} // 存放服务端获取的信息
+          //   const ctx = {} // 存放服务端获取的信息
 
-            const html = await renderToString(app, ctx)
-            // 查看renderToString源码:
-            // app.provide(ssrContextKey, ctx)
-            // ssrContext会监听这个
-          }
+          //   const html = await renderToString(app, ctx)
+          //   // 查看renderToString源码:
+          //   // app.provide(ssrContextKey, ctx)
+          //   // ssrContext会监听这个
+          // }
           if (ssr) {
             // TODO path.relative(root, id) 根目录到当前文件目录的相对路径
             const normalizedId = normalizePath(path.relative(root, id))
